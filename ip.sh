@@ -237,6 +237,7 @@ echo "[OK]"
 
 echo "Mise en place du serveur de nom $ippasserelle "
 echo nameserver $ippasserelle > /etc/resolv.conf
+echo "$ipposte  vm-ldap-server" >> /etc/hosts
 echo "[OK]"
 
 
