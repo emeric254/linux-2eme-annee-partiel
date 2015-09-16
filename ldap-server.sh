@@ -69,7 +69,65 @@ echo "[OK]"
 
 echo "creation et chargement des fichiers ldif utilisateurs"
 cat <<EOF >> ./temp-ldap/users.ldif
+# Padmé Amidala
+dn: uid=padme,ou=people,dc=lab,dc=stri
+objectClass: person
+objectClass: shadowAccount
+objectClass: posixAccount
+cn: Padme
+sn: Padmé Amidala Skywalker
+uid: padme
+uidNumber: 10000
+gidNumber: 10000
+loginShell: /bin/bash
+homeDirectory: /ahome/padme
+userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
+gecos: Padme Amidala Skywalker
 
+# Anakin Skywalker
+dn: uid=anakin,ou=people,dc=lab,dc=stri
+objectClass: person
+objectClass: shadowAccount
+objectClass: posixAccount
+cn: Anakin
+sn: Anakin Skywalker
+uid: anakin
+uidNumber: 10001
+gidNumber: 10001
+loginShell: /bin/bash
+homeDirectory: /ahome/anakin
+userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
+gecos: Anakin Skywalker
+
+# Leia Organa
+dn: uid=leia,ou=people,dc=lab,dc=stri
+objectClass: person
+objectClass: shadowAccount
+objectClass: posixAccount
+cn: Leia
+sn: Leia Organa
+uid: leia
+uidNumber: 10002
+gidNumber: 10002
+loginShell: /bin/bash
+homeDirectory: /ahome/leia
+userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
+gecos: Leia Organa
+
+# Luke Skywalker
+dn: uid=luke,ou=people,dc=lab,dc=stri
+objectClass: person
+objectClass: shadowAccount
+objectClass: posixAccount
+cn: Luke
+sn: Luke Skywalker
+uid: luke
+uidNumber: 10003
+gidNumber: 10003
+loginShell: /bin/bash
+homeDirectory: /ahome/luke
+userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
+gecos: Luke Skywalker
 EOF
 ldapadd -cxWD cn=$organisation,dc=$dc2,dc=$dc1 -f ./temp-ldap/users.ldif
 echo "[OK]"
@@ -80,7 +138,8 @@ aptitude install phpldapadmin apache2
 sed -n '/<IfModule mpm_prefork_module>/,/<\/IfModule>/p' /etc/apache2/apache2.conf
 a2enmod ssl
 a2ensite default-ssl
-/etc/init.d/apache2 restart
-#~ manque config.php a modif pour phpldapadmin <---------------------------------------- @TODO
+service apache2 restart
+sed -i 's/dc=example,dc=com/dc=$dc2,dc=$dc1/g' /etc/phpldapadmin/config.php
+service apache2 reload
 echo "[OK]"
 
