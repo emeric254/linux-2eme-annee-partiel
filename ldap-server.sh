@@ -42,6 +42,10 @@ echo "creation de la configuration par dpkg-reconfigure"
 dpkg-reconfigure slapd
 
 
+echo "Lancement du deamon"
+service slapd start
+
+
 echo "creation et chargement des fichiers ldif pour la configuration supplementaire"
 echo "  - logs"
 mkdir temp-ldap
