@@ -134,7 +134,7 @@ echo "[OK]"
 
 
 echo "mise en place du gestionnaire PHPLDAPADMIN"
-aptitude install phpldapadmin apache2
+apt-get install phpldapadmin apache2
 sed -n '/<IfModule mpm_prefork_module>/,/<\/IfModule>/p' /etc/apache2/apache2.conf
 a2enmod ssl
 a2ensite default-ssl
