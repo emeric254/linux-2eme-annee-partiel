@@ -2,7 +2,7 @@
 
 if [ $# -ne 4 ]
 then
-    echo "Usage: ./$0 <ip> <ou> <dc> <dc> "
+    echo "Usage: ./$0 <ip server> <ou> <dc> <dc> "
     exit -1
 fi
 

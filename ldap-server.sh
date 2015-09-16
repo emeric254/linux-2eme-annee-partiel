@@ -51,7 +51,7 @@ changetype: modify
 replace: olcLogLevel
 olcLogLevel: stats
 EOF
-ldapmodify -Y EXTERNAL -H ldapi:// -f ./temp-ldap/setolcLogLevel2stats.ldif
+ldapmodify -Y EXTERNAL -H ldapi:/// -f ./temp-ldap/setolcLogLevel2stats.ldif
 echo "  - structure"
 cat <<EOF >>./temp-ldap/ou.ldif
 dn: ou=$organisation,dc=$dc2,dc=$dc1
