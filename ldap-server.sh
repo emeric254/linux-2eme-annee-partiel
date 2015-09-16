@@ -45,10 +45,10 @@ dpkg-reconfigure slapd
 echo "Lancement du deamon"
 service slapd start
 
-
 echo "creation et chargement des fichiers ldif pour la configuration supplementaire"
-echo "  - logs"
 mkdir temp-ldap
+
+echo "  - logs"
 cat <<EOF >./temp-ldap/setolcLogLevel2stats.ldif
 # Set olcLogLevel 2 stats
 dn: cn=config
@@ -56,7 +56,9 @@ changetype: modify
 replace: olcLogLevel
 olcLogLevel: stats
 EOF
+
 ldapmodify -Y EXTERNAL -H ldapi:/// -f ./temp-ldap/setolcLogLevel2stats.ldif
+
 echo "  - structure"
 cat <<EOF >./temp-ldap/ou.ldif
 dn: ou=$organisation,dc=$dc2,dc=$dc1
@@ -67,15 +69,15 @@ dn: ou=$organisation,dc=$dc2,dc=$dc1
 objectClass: organizationalUnit
 ou: groups
 EOF
-ldapadd -cxWD cn=admin,dc=$dc1 -f ./temp-ldap/ou.ldif
 
+ldapadd -cxWD cn=admin,dc=$dc2,dc=$dc1 -f ./temp-ldap/ou.ldif
 echo "[OK]"
 
 
 echo "creation et chargement des fichiers ldif utilisateurs"
 cat <<EOF > ./temp-ldap/users.ldif
 # Padmé Amidala
-dn: uid=padme,ou=people,dc=lab,dc=stri
+dn: uid=padme,ou=$organisation,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
@@ -90,7 +92,7 @@ userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
 gecos: Padme Amidala Skywalker
 
 # Anakin Skywalker
-dn: uid=anakin,ou=people,dc=lab,dc=stri
+dn: uid=anakin,ou=$organisation,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
@@ -105,7 +107,7 @@ userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
 gecos: Anakin Skywalker
 
 # Leia Organa
-dn: uid=leia,ou=people,dc=lab,dc=stri
+dn: uid=leia,ou=$organisation,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
@@ -120,7 +122,7 @@ userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
 gecos: Leia Organa
 
 # Luke Skywalker
-dn: uid=luke,ou=people,dc=lab,dc=stri
+dn: uid=luke,ou=$organisation,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
