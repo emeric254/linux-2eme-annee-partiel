@@ -11,8 +11,7 @@ organisation=$2
 dc1=$3
 dc2=$4
 
-apt-get install ldap-utils
-apt-get install libnss-ldap libpam-ldap nscd
+apt-get install ldap-utils libnss-ldap libpam-ldap nscd
 
 #~ Pour le paquet libpam-ldap, voici la liste des options retenues.
     #~ Identifiant uniforme de ressource (« URI ») d'accès au serveur LDAP : ldap://$ip
