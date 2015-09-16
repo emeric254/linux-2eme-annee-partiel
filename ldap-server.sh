@@ -44,7 +44,7 @@ dpkg-reconfigure slapd
 echo "creation et chargement des fichiers ldif pour la configuration supplementaire"
 echo "  - logs"
 mkdir temp-ldap
-cat <<EOF >>./temp-ldap/setolcLogLevel2stats.ldif
+cat <<EOF >./temp-ldap/setolcLogLevel2stats.ldif
 # Set olcLogLevel 2 stats
 dn: cn=config
 changetype: modify
@@ -53,7 +53,7 @@ olcLogLevel: stats
 EOF
 ldapmodify -Y EXTERNAL -H ldapi:/// -f ./temp-ldap/setolcLogLevel2stats.ldif
 echo "  - structure"
-cat <<EOF >>./temp-ldap/ou.ldif
+cat <<EOF >./temp-ldap/ou.ldif
 dn: ou=$organisation,dc=$dc2,dc=$dc1
 objectClass: organizationalUnit
 ou: people
@@ -68,7 +68,7 @@ echo "[OK]"
 
 
 echo "creation et chargement des fichiers ldif utilisateurs"
-cat <<EOF >> ./temp-ldap/users.ldif
+cat <<EOF > ./temp-ldap/users.ldif
 # Padmé Amidala
 dn: uid=padme,ou=people,dc=lab,dc=stri
 objectClass: person
