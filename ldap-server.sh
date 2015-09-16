@@ -139,7 +139,7 @@ sed -n '/<IfModule mpm_prefork_module>/,/<\/IfModule>/p' /etc/apache2/apache2.co
 a2enmod ssl
 a2ensite default-ssl
 service apache2 restart
-sed -i 's/dc=example,dc=com/dc=$dc2,dc=$dc1/g' /etc/phpldapadmin/config.php
+sed -i "s/dc=example,dc=com/dc=$dc2,dc=$dc1/g" /etc/phpldapadmin/config.php
 service apache2 reload
 echo "[OK]"
 
