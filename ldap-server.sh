@@ -8,8 +8,9 @@ then
 fi
 
 organisation=$1
-dc1=$2
-dc2=$3
+#~  ====>  dc2.dc1
+dc1=$3
+dc2=$2
 
 
 echo "Installation"
