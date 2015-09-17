@@ -11,6 +11,7 @@ organisation=$2
 dc1=$3
 dc2=$4
 
+echo "installation des paquets"
 apt-get install ldap-utils libnss-ldap libpam-ldap nscd
 
 #~ Pour le paquet libpam-ldap, voici la liste des options retenues.
@@ -32,9 +33,11 @@ echo "configuration de /etc/nsswitch.conf"
 sed -i '/passwd:/c\passwd:         compat ldap' /etc/nsswitch.conf
 sed -i '/group:/c\group:         compat ldap' /etc/nsswitch.conf
 sed -i '/shadow:/c\shadow:         compat ldap' /etc/nsswitch.conf
+echo "[OK]"
+
+echo "redemarage de nscd"
 #~ /etc/init.d/nscd restart
 service nscd restart
-echo "[OK]"
 
 
 #~ ldapsearch -LLL -H ldap://$ip \ -b dc=$dc1 -D cn=admin,dc=$dc1 -W uid=robin
