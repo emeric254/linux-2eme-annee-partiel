@@ -37,7 +37,10 @@ mount -t nfsv4 $ip:/home /ahome
 #~ rendre le montage MANUELLEMENT permanent:
 echo "$ip:/home \t /ahome \t nfs4 \t 0 \t 0" >> /etc/ftab
 
+
+
 #~ ---------------------------------------------------------------------
+
 
 #~ installation de auto-fs
 apt-get install autofs
@@ -46,6 +49,12 @@ apt-get install autofs
 adduser --no-create-home --home /ahome/etu-nfs etu-nfs
 
 #~ ajouter /ahome \t /etc/auto.home à /etc/auto.master
-cat <<EOF >> /etc/auto.home
+cat <<EOF > /etc/auto.master
+/ahome  /etc/auto.home
+EOF
+
+cat <<EOF > /etc/auto.home
 *       -fstype=nfs4    $ip:/home/&
 EOF
+
+echo "penser a demonter manuellement ce qui est fait pour que le montage automatique puisse reussir !!!"
