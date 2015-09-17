@@ -29,9 +29,9 @@ echo "Menu de configuration du paquet libpam-ldap"
 dpkg-reconfigure libpam-ldap
 
 echo "configuration de /etc/nsswitch.conf"
-sed -i 's/passwd:/passwd:         compat ldap/g' /etc/nsswitch.conf
-sed -i 's/group:/group:         compat ldap/g' /etc/nsswitch.conf
-sed -i 's/shadow:/shadow:         compat ldap/g' /etc/nsswitch.conf
+sed -i '/passwd:/c\passwd:         compat ldap/g' /etc/nsswitch.conf
+sed -i '/group:/c\group:         compat ldap/g' /etc/nsswitch.conf
+sed -i '/shadow:/c\shadow:         compat ldap/g' /etc/nsswitch.conf
 echo "[OK]"
 
 

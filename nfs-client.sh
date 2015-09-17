@@ -13,8 +13,8 @@ ip=$1
 apt-get install rpcbind nfs-common
 
 #~ config nfs-common
-sed -i "s/NEED_STATD=/NEED_STATD=no/g" /etc/default/nfs-common
-sed -i "s/NEED_IDMAPD=/NEED_IDMAPD=YES/g" /etc/default/nfs-common
+sed -i "/NEED_STATD=/c\NEED_STATD=no/g" /etc/default/nfs-common
+sed -i "/NEED_IDMAPD=/c\NEED_IDMAPD=YES/g" /etc/default/nfs-common
 
 #~ on arrete le deamon
 #~ /etc/init.d/nfs-common stop
