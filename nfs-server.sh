@@ -34,6 +34,7 @@ service nfs-common start
 service nfs-kernel-server restart
 
 #~ creation du dossier ahome partagé
+mkdir -p /home/exports/home
 mkdir /ahome
 mount --bind /home/exports/home /ahome
 
