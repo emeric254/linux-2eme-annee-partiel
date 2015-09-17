@@ -22,6 +22,20 @@ sed -i "s/NEED_IDMAPD=/NEED_IDMAPD=YES/g" /etc/default/nfs-common
 service nfs-common stop
 killall rpc_statd
 
+
+#~ creation du dossier home a partagé
+mkdir -p /home/exports/home
+
+#~ creation fichier exports
+cat <<EOF >> /etc/exports
+/home/exports           $ip/$masque(rw,sync,fsid=0,crossmnt,no_subtree_check)
+/home/exports/home      $ip/$masque(rw,sync,no_subtree_check)
+EOF
+
+#~ creation du dossier ahome virtuel partagé
+mkdir /ahome
+mount --bind /home/exports/home /ahome
+
 #~ on demare le daemon
 #~ /etc/init.d/nfs-common start
 service nfs-common start
@@ -32,17 +46,6 @@ service nfs-common start
 
 #~ /etc/init.d/nfs-kernel-server restart
 service nfs-kernel-server restart
-
-#~ creation du dossier ahome partagé
-mkdir -p /home/exports/home
-mkdir /ahome
-mount --bind /home/exports/home /ahome
-
-#~ creation fichier exports
-cat <<EOF >> /etc/exports
-/home/exports           $ip/$masque(rw,sync,fsid=0,crossmnt,no_subtree_check)
-/home/exports/home      $ip/$masque(rw,sync,no_subtree_check)
-EOF
 
 #~ ajout utilisateur local avec home dans le dossier de partage
 adduser --home /ahome/etu-nfs etu-nfs
