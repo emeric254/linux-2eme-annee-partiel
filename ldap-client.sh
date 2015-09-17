@@ -14,6 +14,12 @@ dc2=$4
 echo "installation des paquets"
 apt-get install ldap-utils libnss-ldap libpam-ldap nscd
 
+
+echo "test du serveur avec recup des infos de 'padme'"
+ldapsearch -LLL -H ldap://$ip -b dc=$dc2,dc=$dc1 -D cn=admin,dc=$dc2,dc=$dc1 -W uid=padme
+echo "[OK]"
+
+
 #~ Pour le paquet libpam-ldap, voici la liste des options retenues.
     #~ Identifiant uniforme de ressource (« URI ») d'accès au serveur LDAP : ldap://$ip
     #~ Nom distinctif (DN) de la base de recherche : dc=$dc2,dc=$dc1
