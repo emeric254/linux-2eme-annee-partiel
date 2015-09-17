@@ -77,7 +77,7 @@ echo "[OK]"
 echo "creation et chargement des fichiers ldif utilisateurs"
 cat <<EOF > ./temp-ldap/users.ldif
 # Padmé Amidala
-dn: uid=padme,ou=$organisation,dc=$dc2,dc=$dc1
+dn: uid=padme,ou=people,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
@@ -92,7 +92,7 @@ userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
 gecos: Padme Amidala Skywalker
 
 # Anakin Skywalker
-dn: uid=anakin,ou=$organisation,dc=$dc2,dc=$dc1
+dn: uid=anakin,ou=people,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
@@ -107,7 +107,7 @@ userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
 gecos: Anakin Skywalker
 
 # Leia Organa
-dn: uid=leia,ou=$organisation,dc=$dc2,dc=$dc1
+dn: uid=leia,ou=people,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
@@ -122,7 +122,7 @@ userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
 gecos: Leia Organa
 
 # Luke Skywalker
-dn: uid=luke,ou=$organisation,dc=$dc2,dc=$dc1
+dn: uid=luke,ou=people,dc=$dc2,dc=$dc1
 objectClass: person
 objectClass: shadowAccount
 objectClass: posixAccount
