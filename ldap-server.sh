@@ -61,11 +61,11 @@ ldapmodify -Y EXTERNAL -H ldapi:/// -f ./temp-ldap/setolcLogLevel2stats.ldif
 
 echo "  - structure"
 cat <<EOF >./temp-ldap/ou.ldif
-dn: ou=$organisation,dc=$dc2,dc=$dc1
+dn: ou=people,dc=$dc2,dc=$dc1
 objectClass: organizationalUnit
 ou: people
 
-dn: ou=$organisation,dc=$dc2,dc=$dc1
+dn: ou=groups,dc=$dc2,dc=$dc1
 objectClass: organizationalUnit
 ou: groups
 EOF
