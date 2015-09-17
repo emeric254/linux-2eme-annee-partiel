@@ -17,7 +17,7 @@ uuid=$1
 
 echo "Creation du point de montage et montage"
 mkdir /var/lib/iscsi-target
-echo "UUID=$uuid         /var/lib/iscsi-target/  ext4    defaults        0       2" >> /etc/fstab
+echo "UUID=\"$uuid\"         /var/lib/iscsi-target/  ext4    defaults        0       2" >> /etc/fstab
 mount -a
 echo "[OK]"
 
@@ -45,19 +45,38 @@ service open-iscsi status
 #~ echo "liberation de toutes les sessions"
 #~ iscsiadm -m node -U all
 
-#~ iscsiadm -m discovery --type sendtargets --portal=$ip:$port
 
 
-# lancer le menu iscsi machin
-#~ --cible iscsi
-#~ cd /iscsi
-#~ create
-#~ cd iqn ....
-#~ cd tpg1
-#~ luns/ create /backstore/filesio/initiator1
-#~ portals/ create 10.0.2.10 3260
-#~
-#~ //prendre la cle du client
-#~ tpg1 etc ...
-#~ cd acls
-#~ create iqn"clé client"
+# lancer  targetcli
+    #~  cd backstore
+    #~  cd fileio    ou   cd iblock
+    #~  create initiator1 /dev/sdb     ou  create initiator1 /var/lib/iscsi-target/initiator-1.disk
+    #~
+    #~  cd iscsi
+    #~  create
+    #~  cd iqn-machin/tpg1
+    #~  luns/ create /backstore/filesio/initiator1
+    #~  portals/ create $ipV4 3260
+    #~  portals/ create $ipV6 3260
+
+
+#~ aller test coter initiator et relever sa clef puis :
+    #~  cd iscsi
+    #~  create
+    #~  cd iqn-machin/tpg1
+    #~  acls/ create $iqn-de-l-initiator
+
+
+#~ pour une authenfication open
+    #~  set attribute authentication=0 demo_mode_write_protect=0
+
+#~  authentification chap
+    #~  acls/$iqn-de-l-initiator set auth userid=initiator-username
+    #~  acls/$iqn-de-l-initiator set auth password=initiator-53cr3t-p455w0rd
+#~ aller vois le fichier /etc/iscsi/iscsid.conf sur le client
+    #~  > node.session.auth.authmethod = CHAP
+    #~  > node.session.auth.username = SAN-lab-1stInitiator
+    #~  > node.session.auth.password = MyS4N-1stInitiator-53cr3t
+
+
+#~ on repart test sur le client et ca marche
