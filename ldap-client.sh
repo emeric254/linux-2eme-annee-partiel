@@ -32,6 +32,8 @@ echo "configuration de /etc/nsswitch.conf"
 sed -i '/passwd:/c\passwd:         compat ldap' /etc/nsswitch.conf
 sed -i '/group:/c\group:         compat ldap' /etc/nsswitch.conf
 sed -i '/shadow:/c\shadow:         compat ldap' /etc/nsswitch.conf
+#~ /etc/init.d/nscd restart
+service nscd restart
 echo "[OK]"
 
 
