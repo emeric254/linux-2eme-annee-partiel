@@ -136,7 +136,7 @@ homeDirectory: /ahome/luke
 userPassword: {SSHA}b1utGdYRN3JvGKiU5JrpKFLvNTrZODO8
 gecos: Luke Skywalker
 EOF
-ldapadd -cxWD cn=$organisation,dc=$dc2,dc=$dc1 -f ./temp-ldap/users.ldif
+ldapadd -cxWD cn=admin,dc=$dc2,dc=$dc1 -f ./temp-ldap/users.ldif
 echo "[OK]"
 
 
