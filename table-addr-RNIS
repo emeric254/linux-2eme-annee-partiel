@@ -1,0 +1,49 @@
+Groupe 	Poste 	Rôle 	Bus S0 	N° Tél. 	Interface 	Réseau/Authentification
+
+
+centares 	Hub1 	S0.1 	104 	ippp0 	192.168.104.1:192.168.104.2
+                        S0.1 	105 	ippp1 	192.168.105.1:192.168.105.2
+
+
+bespin 	     Spoke11 	S0.2 	106 	ippp0 	etu_s11 / Sp0k3.11
+                      - 	- 	dummy0 	10.106.0.1/29
+
+
+alderaan 	Spoke12 	S0.2 	107 	ippp0 	etu_s12 / Sp0k3.12
+                      - 	- 	dummy0 	10.107.0.1/29
+
+
+endor 	 Hub2 	S0.3 	108 	ippp0 	192.168.107.1:192.168.107.2
+                S0.3 	109 	ippp1 	192.168.108.1:192.168.108.2
+
+
+dagobah 	Spoke21 	S0.4 	110 	ippp0 	etu_s21 / Sp0k3.21
+                      - 	- 	dummy0 	10.110.0.1/29
+
+
+coruscant 	Spoke22 	S0.4 	111 	ippp0 	etu_s22 / Sp0k3.22
+                      - 	- 	dummy0 	10.111.0.1/29
+
+
+hoth 	Hub3 	S0.5 	112 	ippp0 	192.168.111.1:192.168.111.2
+                S0.5 	113 	ippp1 	192.168.112.1:192.168.112.2
+
+
+geonosis 	Spoke31 	S0.6 	114 	ippp0 	etu_s31 / Sp0k3.31
+                      - 	- 		dummy0 	10.114.0.1/29
+
+
+felucia 	Spoke32 	S0.6 	115 	ippp0 	etu_s32 / Sp0k3.32
+                      - 	- 		dummy0 	10.115.0.1/29
+
+
+naboo 	Hub4 	S0.7 	116 	ippp0 	192.168.115.1:192.168.115.2
+                S0.7 	117 	ippp1 	192.168.116.1:192.168.116.2
+
+
+mustafar 	Spoke41 	S0.8 	118 	ippp0 	etu_s41 / Sp0k3.41
+                      - 	- 		dummy0 	10.118.0.1/29
+
+
+tatooine 	Spoke42 	S0.8 	119 	ippp0 	etu_s42 / Sp0k3.42
+                      - 	- 		dummy0 	10.119.0.1/29
