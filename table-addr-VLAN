@@ -1,23 +1,21 @@
-Groupe 	Poste 	Rôle 	router-id OSPF 	VLAN 	Interface 	Réseau
+
+centares    Hub1    0.0.0.10    (natif)     eth0        172.16.1.1/20
+centares                          221       eth0.221    10.0.21.1/26
+certares                          231       eth0.231    10.0.31.1/26
 
 
-centares 	Hub1 	0.0.0.10 	(natif) 	eth0 		172.16.1.1/20
-centares                      		221 		eth0.221 	10.0.21.1/26
-certares                       		231 		eth0.231 	10.0.31.1/26
+endor   Hub2    0.0.0.20    221     eth0.221    10.0.21.2/26
+endor                       242     eth0.242    10.0.42.2/26
+endor                       223     eth0.223    10.0.23.2/26
+endor                       232     eth0.232    10.0.32.2/26
 
 
-endor 	Hub2 	0.0.0.20 	221 	eth0.221 	10.0.21.2/26
-endor                        	242 	eth0.242 	10.0.42.2/26
-endor                         	223 	eth0.223 	10.0.23.2/26
-endor                         	232 	eth0.232 	10.0.32.2/26
+hoth    Hub3    0.0.0.30    243     eth0.243    10.0.43.3/26
+hoth                        231     eth0.231    10.0.31.3/26
+hoth                        223     eth0.223    10.0.23.3/26
+hoth                        232     eth0.232    10.0.32.3/26
 
 
-hoth 	Hub3 	0.0.0.30 	243 	eth0.243 	10.0.43.3/26
-hoth                          	231 	eth0.231 	10.0.31.3/26
-hoth                          	223 	eth0.223 	10.0.23.3/26
-hoth                         	232 	eth0.232 	10.0.32.3/26
-
-
-naboo 	Hub4 	0.0.0.40 	(natif) 	eth0 		172.16.4.1/20
-naboo                          	242 		eth0.242 	10.0.42.4/26
-naboo                          	243 		eth0.243 	10.0.43.4/26
+naboo   Hub4    0.0.0.40    (natif)     eth0        172.16.4.1/20
+naboo                        242        eth0.242    10.0.42.4/26
+naboo                        243        eth0.243    10.0.43.4/26
