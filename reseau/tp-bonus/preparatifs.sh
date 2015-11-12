@@ -9,6 +9,7 @@ apt-get install ipppd apache2 quagga
 
 
 # affichage details pour le poste
+echo "-------------------------------------------------------------------------"
 echo "details réseau pour ce poste : $nodeName"
 echo "	- RNIS : "
 grep $nodeName table-addr-RNIS
@@ -26,3 +27,4 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 # virer le dhclient qui reset la conf toutes les 5 mins
 echo "killall dhclient"
 killall dhclient
+

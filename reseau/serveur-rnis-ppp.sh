@@ -100,12 +100,11 @@ ip link set dev $interface up
 
 # parametrage de l'IP de l'interface
 echo "paramtrage de l'IP de l'interface"
-ip address add $ipPoste dev $interface
+ip address add $ipPoste/30 dev $interface
 
 # on lance le demon PPP
 echo "lancement du deamon ipppd (noauth, debug)"
 ipppd $interface noauth debug $ipPoste:$ipAutre
 
 sleep 3
-
 
