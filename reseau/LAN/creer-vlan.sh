@@ -13,12 +13,16 @@ ipMask=$3
 # creation vlan
 ip link add link $interface name $interface.$numVlan type vlan id $numVlan
 
-# ajout adresse
-ip address add $ipMask dev $interface.$numVlan
+#config vlan
+ip link set dev $interface.$numVlan txqueuelen 10000
+tc qdisc add dev $interface.$numVlan root pfifo_fast
 
 # activation interface
 ip link set up $interface
 
 # activation vlan
 ip link set up $interface.$numVlan
+
+# ajout adresse
+ip address add $ipMask dev $interface.$numVlan
 
