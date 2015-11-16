@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-get install quagga apache2
+apt-get install quagga apache2 iptables iptstate
 
 sysctl -w net.ipv4.ip_forward=1
 sysctl -w net.ipv4.conf.default.rp_filter=1
