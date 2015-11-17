@@ -27,11 +27,11 @@ log file /var/log/quagga/zebra.log
 !interface eth0
 ! bandwidth 100000
 ! ipv6 nd suppress-ra
---
+!
 !interface eth0.12
 ! bandwidth 100000
 ! ipv6 nd suppress-ra
---
+!
 !interface eth0.13
 ! bandwidth 100000
 ! ipv6 nd suppress-ra
