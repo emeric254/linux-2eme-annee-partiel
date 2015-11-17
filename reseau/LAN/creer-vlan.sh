@@ -18,10 +18,10 @@ ip link set dev $interface.$numVlan txqueuelen 10000
 tc qdisc add dev $interface.$numVlan root pfifo_fast
 
 # activation interface
-ip link set up $interface
+ip link set up dev $interface
 
 # activation vlan
-ip link set up $interface.$numVlan
+ip link set up dev $interface.$numVlan
 
 # ajout adresse
 ip address add $ipMask dev $interface.$numVlan

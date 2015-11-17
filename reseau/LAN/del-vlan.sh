@@ -10,7 +10,7 @@ interface=$1
 numVlan=$2
 
 # desactivation du vlan
-ip link set down $interface.$numVlan
+ip link set down dev $interface.$numVlan
 
 # supression route(s) du vlan
 ip route flush dev $interface.$numVlan
@@ -19,5 +19,5 @@ ip route flush dev $interface.$numVlan
 ip address flush dev $interface.$numVlan
 
 # supression du vlan
-ip link del link $interface.$numVlan
+ip link del link dev $interface.$numVlan
 
