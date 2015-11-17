@@ -24,5 +24,5 @@ ip link set up dev $interface
 ip link set up dev $interface.$numVlan
 
 # ajout adresse
-ip address add $ipMask dev $interface.$numVlan
+ip address add $ipMask brd + dev $interface.$numVlan
 
