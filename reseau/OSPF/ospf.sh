@@ -77,6 +77,6 @@ echo "(config-router)# network X.X.X.X/Y area 0"
 echo "(config-router)# network X.X.X.X/Y area 0"
 echo "# sh ip ospf neighbor"
 echo "# sh ip ospf route"
-sleep 5
+sleep 3
 telnet localhost ospfd
 
