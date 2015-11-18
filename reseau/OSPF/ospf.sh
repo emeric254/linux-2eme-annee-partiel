@@ -74,7 +74,7 @@ echo "# conf t"
 echo "(config)# router ospf"
 echo "(config-router)# router-id 0.0.0.X"
 echo "(config-router)# network X.X.X.X/Y area 0"
-echo "(config-router)# network X.X.X.X/Y area 0"
+echo "(config-router)# redistribute connected"
 echo "# sh ip ospf neighbor"
 echo "# sh ip ospf route"
 sleep 3

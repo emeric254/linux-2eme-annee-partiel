@@ -2,7 +2,10 @@
 
 killall dhclient
 
-apt-get install quagga apache2 iptables iptstate
+apt-get install quagga apache2 iptables iptstate qemu-system-x86 spice-client-gtk
+
+modprobe kvm 2> /dev/null
+adduser etu kvm
 
 echo 1 > /proc/sys/net/ipv4/ip_forward
 sysctl -w net.ipv4.ip_forward=1
