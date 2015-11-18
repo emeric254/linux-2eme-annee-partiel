@@ -24,18 +24,16 @@ enable password zebra
 log file /var/log/quagga/zebra.log
 !
 !
-!interface eth0
-! bandwidth 100000
-! ipv6 nd suppress-ra
+interface eth0
+ bandwidth 1000000
+ ipv6 nd suppress-ra
 !
-!interface eth0.12
+!interface eth0.123
 ! bandwidth 100000
 ! ipv6 nd suppress-ra
-!
-!interface eth0.13
-! bandwidth 100000
-! ipv6 nd suppress-ra
+
 EOF
+
 
 # configuration a la main restante pour zebra
 echo "finir la configuration de 'zebra.conf'"
@@ -52,7 +50,9 @@ password zebra
 enable password zebra
 !
 log file /var/log/quagga/ospfd.log
+
 EOF
+
 
 # modif de leur proprietaire
 chown quagga zebra.conf ospfd.conf
