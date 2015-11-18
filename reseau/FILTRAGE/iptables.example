@@ -1,0 +1,37 @@
+
+# -----------------------------------------------------------------------------
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+
+-A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -o lo -m conntrack --ctstate NEW -j ACCEPT
+#-A INPUT -p icmp -m limit --limit 5/min -m conntrack --ctstate NEW -j ACCEPT
+
+-A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+-A OUTPUT -o lo -m conntrack --ctstate NEW -j ACCEPT
+#-A OUTPUT -o eth0 -m conntrack --ctstate NEW -j ACCEPT
+
+#
+-A FORWARD -s 192.168.1.0/25 -i eth0.250 -p tcp -m tcp --sport 1024:65535 --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -s 192.168.1.0/25 -i eth0.250 -p udp -m udp --sport 1024:65535 -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -s 192.168.1.0/25 -i eth0.250 -p icmp -m icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT
+#
+-A FORWARD -s 192.168.1.128/25 -i eth0.251 -p tcp -m tcp --sport 1024:65535 --tcp-flags FIN,SYN,RST,ACK SYN -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -s 192.168.1.128/25 -i eth0.251 -p udp -m udp --sport 1024:65535 -m conntrack --ctstate NEW -j ACCEPT
+-A FORWARD -s 192.168.1.128/25 -i eth0.251 -p icmp -m icmp --icmp-type 8 -m conntrack --ctstate NEW -j ACCEPT COMMIT
+#
+
+
+# -----------------------------------------------------------------------------
+*nat
+:PREROUTING ACCEPT [0:0]
+:POSTROUTING ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+
+#-A POSTROUTING -o eth0 -j MASQUERADE
+
+# -----------------------------------------------------------------------------
+COMMIT
+
