@@ -1,7 +1,10 @@
 #!/bin/bash
 
+killall dhclient
+
 apt-get install quagga apache2 iptables iptstate
 
+echo 1 > /proc/sys/net/ipv4/ip_forward
 sysctl -w net.ipv4.ip_forward=1
 sysctl -w net.ipv4.conf.default.rp_filter=1
 sysctl -w net.ipv4.conf.all.rp_filter=1

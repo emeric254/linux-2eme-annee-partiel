@@ -84,6 +84,10 @@ ip link set dev $interface up
 echo "lancement du deamon ipppd (noauth, debug)"
 ipppd $interface noauth debug
 
+# pour chap :
+# aller voir dans le fichier /etc/ppp/chap-secrets pour ajouter la ligne qui va bien
+#ipppd $interface require-chap debug
+
 sleep 3
 
 ################################################################################
