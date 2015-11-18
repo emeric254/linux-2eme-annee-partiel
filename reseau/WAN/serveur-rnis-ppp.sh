@@ -106,5 +106,7 @@ ip address add $ipPoste/30 dev $interface
 echo "lancement du deamon ipppd (noauth, debug)"
 ipppd $interface noauth debug $ipPoste:$ipAutre
 
-sleep 3
+# pour chap :
+# aller voir dans le fichier /etc/ppp/chap-secrets pour ajouter la ligne qui va bien (login * pass)
+#ipppd ippp0 noauth name LOGIN debug +pwlog
 
