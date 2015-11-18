@@ -10,10 +10,16 @@ ip=$1
 mask=$2
 
 # chargement du module
-modprobe -v dummy numdummies=1
+modprobe dummy 2> /dev/null
+
+# plusieurs dummies, X = nbr de dummy :
+#modprobe dummy numdummies=X  2> /dev/null
+
+# renommage du dummy
+#ip link set name $nom dev dummy0
 
 # activation de l'interface dummy
-ip link set dev dummy0 up
+ip link set up dev dummy0
 
 # parametrage de l'interface
 ip addr add $ip/$mask brd + dev dummy0
