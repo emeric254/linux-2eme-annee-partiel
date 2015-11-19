@@ -108,5 +108,5 @@ ipppd $interface noauth debug $ipPoste:$ipAutre
 
 # pour chap :
 # aller voir dans le fichier /etc/ppp/chap-secrets pour ajouter la ligne qui va bien (login * pass)
-#ipppd ippp0 noauth name LOGIN debug +pwlog
+#ipppd ippp0 auth name LOGIN debug +pwlog
 

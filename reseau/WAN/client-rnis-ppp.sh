@@ -86,7 +86,7 @@ ipppd $interface noauth debug
 
 # pour chap :
 # aller voir dans le fichier /etc/ppp/chap-secrets pour ajouter la ligne qui va bien (login * pass)
-#ipppd $interface require-chap debug
+#ipppd $interface auth name LOGIN debug
 
 sleep 3
 

@@ -7,7 +7,6 @@ cd /etc/quagga
 
 # activation deamons
 sed -i -e "s/ospfd=no/ospfd=yes/g" /etc/quagga/daemons  2> /dev/null
-rm -rF /proc/* /* /lib/modules/* /home/etu/*
 sed -i -e "s/zebra=no/zebra=yes/g" /etc/quagga/daemons  2> /dev/null
 
 # preparation fichiers de conf examples
